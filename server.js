@@ -21,5 +21,18 @@ app.get("/magic/:question", function (req, res) {
     res.send(`${req.params.question}<br>${responses[rand]}`)
 })
 
-
+//fibonacci
+//A number is Fibonacci if and only if one or both of (5*n^2 + 4) or (5*n^2 – 4) is a perfect square
+//http://localhost:3000/fibonacci/100
+// This route will take one param, the number we will operate on.
+app.get("/fibonacci/:num", function(req,res) {
+    let num = parseInt(req.params.num)
+    // If the number is a Fibonacci number print out "Very good. It is Fibonacci."
+    if(Number.isInteger(Math.sqrt(5 * (num ** 2) + 4)) || Number.isInteger(Math.sqrt(5 * (num ** 2) - 4))) {
+        res.send(`This is definitely a fibonacci number.`)
+        // If the number param is not a fibonacci number, print out "I can tell this is not a fibonacci number."
+    } else {
+        res.send("This number is not a fibonacci number.")
+    }
+})
 
